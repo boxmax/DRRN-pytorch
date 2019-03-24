@@ -1,7 +1,7 @@
-import argparse, os, time
+import argparse, os, time # 为Python封装好可选择的参数
 import torch
 import random
-import torch.backends.cudnn as cudnn
+import torch.backends.cudnn as cudnn # 适合GPU的扩展包
 import torch.nn as nn
 import torch.optim as optim
 from torch.autograd import Variable
@@ -15,18 +15,19 @@ parser.add_argument("--batchSize", type=int, default=128, help="Training batch s
 parser.add_argument("--nEpochs", type=int, default=50, help="Number of epochs to train for")
 parser.add_argument("--lr", type=float, default=0.1, help="Learning Rate, Default=0.1")
 parser.add_argument("--step", type=int, default=5, help="Sets the learning rate to the initial LR decayed by momentum every n epochs, Default=5")
+# step?
 parser.add_argument("--cuda", action="store_true", help="Use cuda?")
 parser.add_argument("--resume", default="", type=str, help="Path to checkpoint, Default=None")
 parser.add_argument("--start-epoch", default=1, type = int, help="Manual epoch number (useful on restarts)")
 parser.add_argument("--clip", type=float, default=0.01, help="Clipping Gradients, Default=0.01")
-parser.add_argument("--threads", type=int, default=1, help="Number of threads for data loader to use, Default=1")
+parser.add_argument("--threads", type=int, default=1, help="Number of threads for data loader to use, Default=1") # 线程
 parser.add_argument("--momentum", default=0.9, type=float, help="Momentum, Default=0.9")
 parser.add_argument("--weight-decay", "--wd", default=1e-4, type=float, help="Weight decay, Default=1e-4")
 parser.add_argument("--pretrained", default="", type=str, help='path to pretrained model, Default=None')
 
 def main():
 	global opt, model
-	opt = parser.parse_args()
+	opt = parser.parse_args() # 参数赋值语句
 	print(opt)
 
 	cuda = opt.cuda
